@@ -229,6 +229,10 @@
   </div>
   <div class="stats">
     <div class="stat">
+      <div class="label">Viewing Week</div>
+      <select id="weekSelect" style="font-size:14px; font-weight:700; background:rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.35); border-radius:6px; padding:4px 8px;"></select>
+    </div>
+    <div class="stat">
       <div class="label">Bank Balance (ZAR)</div>
       <div class="val editable" contenteditable="true" id="bankBalance">R5,378,251.61</div>
     </div>
@@ -435,7 +439,7 @@
    DATA MODEL — everything editable lives in this object.
    Loaded from localStorage if present, else these defaults.
 ========================================================= */
-const DEFAULT_DATA = {
+const WEEK_DATA_2026_07_24 = {
   header: {
     bankBalance: "R3,861,480.27",
     usdBalance: "$457,900.63",
@@ -660,20 +664,279 @@ const DEFAULT_DATA = {
   }
 };
 
-const STORAGE_KEY = "ags_weekly_report_2026_07_24";
+const WEEK_DATA_2026_07_17 = {
+  header: {
+    bankBalance: "R2,494,830.53",
+    usdBalance: "$457,900.63",
+    reportDate: "17 Jul 2026"
+  },
+
+  cashflow: {
+    months: ["July 2026","August 2026","September 2026","October 2026","November 2026","December 2026","January 2027","February 2027"],
+    detail: {
+      "July 2026": {
+        opening: "R2,494,830.53",
+        inflows: [ ["Debtors", 3560000] ],
+        outflows: [ ["24 Salaries",401561.54], ["24 Incentive 2026 / commission",204792.62], ["31 Fusion Leather",3007287.11], ["31 Hannitan",1500000], ["31 SARS VAT",23849.85], ["31 Creditors",302005.15] ],
+        available: "R615,334.26"
+      },
+      "August 2026": {
+        opening: "",
+        inflows: [ ["Debtors", 9750000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",105000], ["Hannitan",5000000], ["Salaries",400000], ["Fusion Leather",3145380], ["SARS VAT",160000], ["SARS Provisional Tax",836725.68], ["Creditors",325000] ],
+        available: "R268,228.58"
+      },
+      "September 2026": {
+        opening: "",
+        inflows: [ ["Debtors", 9750000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",102000], ["Hannitan",3500000], ["Salaries",400000], ["Fusion Leather",2088975], ["Dividend",2500000], ["Incentive",250000], ["SARS VAT",85000], ["SARS Top Up",58000], ["Creditors",350000] ],
+        available: "R559,253.58"
+      },
+      "October 2026": {
+        opening: "",
+        inflows: [ ["Debtors", 10500000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",102000], ["Hannitan",6500000], ["Salaries",400000], ["Fusion Leather",2500000], ["SARS VAT",85000], ["Creditors",385000] ],
+        available: "R962,253.58"
+      },
+      "November 2026": {
+        opening: "",
+        inflows: [ ["Debtors", 10750000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",102000], ["Hannitan",6000000], ["Dividend",2500000], ["Salaries",400000], ["Fusion Leather",1850000], ["SARS VAT",85000], ["Creditors",385000] ],
+        available: "R265,253.58"
+      },
+      "December 2026": {
+        opening: "",
+        inflows: [ ["Debtors", 9000000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",102000], ["Hannitan",2000000], ["Salaries",800000], ["Fusion Leather",2500000], ["SARS VAT",185000], ["Creditors",385000] ],
+        available: "R3,168,253.58"
+      },
+      "January 2027": {
+        opening: "",
+        inflows: [ ["Debtors", 6500000] ],
+        outflows: [ ["Debit Orders",135000], ["SARS PAYE",135000], ["Hannitan",2000000], ["Salaries",450000], ["Fusion Leather",850000], ["SARS VAT",150000], ["Creditors",385000] ],
+        available: "R5,563,253.58"
+      },
+      "February 2027": {
+        opening: "",
+        inflows: [ ["Debtors", 8500000] ],
+        outflows: [ ["Debit Orders",135000], ["SARS PAYE",115000], ["Hannitan",5000000], ["Salaries",450000], ["Incentive",500000], ["Fusion Leather",1500000], ["SARS VAT",65000], ["SARS Provisional Tax",2800000], ["Dividend",1500000], ["Creditors",385000] ],
+        available: "R1,613,253.58"
+      }
+    }
+  },
+
+  salesMonths: {
+    order: ["July '26","June '26","May '26"],
+    data: {
+      "July '26": { weeks:[
+        {label:"Week 1", m2:4729.58, rand:1552076.93},
+        {label:"Week 2", m2:7416.81, rand:2416467.68},
+        {label:"Week 3", m2:5820, rand:1888755},
+        {label:"Week 4", m2:0, rand:0},
+        {label:"Week 5", m2:0, rand:0}
+      ]},
+      "June '26": { weeks:[
+        {label:"Week 1", m2:7228, rand:2275055},
+        {label:"Week 2", m2:9499, rand:3231141},
+        {label:"Week 3", m2:5054, rand:1584885},
+        {label:"Week 4", m2:5276.26, rand:1739238.53},
+        {label:"Week 5", m2:1054.44, rand:327064.69}
+      ]},
+      "May '26": { weeks:[
+        {label:"Week 1", m2:8335, rand:2756186},
+        {label:"Week 2", m2:5822.33, rand:1812728.4},
+        {label:"Week 3", m2:5377, rand:1757696.45},
+        {label:"Week 4", m2:7404, rand:2381900},
+        {label:"Week 5", m2:0, rand:0}
+      ]}
+    }
+  },
+
+  yoy: {
+    "July '26": { weeks:[
+      {label:"Week 1", m2:4729.58, rand:1552076.93},{label:"Week 2", m2:7416.81, rand:2416467.68},
+      {label:"Week 3", m2:5820, rand:1888755},{label:"Week 4", m2:0, rand:0},{label:"Week 5", m2:0, rand:0}
+    ]},
+    "July '25": { weeks:[
+      {label:"Week 1", m2:8161.4, rand:2604012.51},{label:"Week 2", m2:6306.57, rand:1956114.92},
+      {label:"Week 3", m2:5026.59, rand:1572366.51},{label:"Week 4", m2:6554.49, rand:2109830.89},{label:"Week 5", m2:5339, rand:1594959}
+    ]},
+    "July '24": { weeks:[
+      {label:"Week 1", m2:6529, rand:2012057},{label:"Week 2", m2:5649, rand:1712895},
+      {label:"Week 3", m2:7515, rand:2250150},{label:"Week 4", m2:4545, rand:1384293},{label:"Week 5", m2:4595, rand:1440049}
+    ]}
+  },
+
+  branchMonths: {
+    order: ["Mar '26","Apr '26","May '26","Jun '26","Jul '26"],
+    data: {
+      "Mar '26": {cpt:12224, jhb:10151, dbn:2544},
+      "Apr '26": {cpt:13162, jhb:7996, dbn:2416},
+      "May '26": {cpt:14573, jhb:9663, dbn:2702},
+      "Jun '26": {cpt:15762, jhb:9987, dbn:2362},
+      "Jul '26": {cpt:10438.98, jhb:6081.02, dbn:1445.56}
+    }
+  },
+
+  top5Period: "June 2026",
+  top5: {
+    cpt: [
+      {name:"GH LEATHERS LTD", qty:1464.08},
+      {name:"COUCH POTATO", qty:856.94},
+      {name:"ALWAYS AROUND (PTY) LTD T/A BEESDAM", qty:787.17},
+      {name:"LEATHER DIRECT (Pty) Ltd", qty:722.42},
+      {name:"ROWDY INTERNATIONAL (Pty) Ltd", qty:707.48}
+    ],
+    jhb: [
+      {name:"INSPIRE RENTALS PTY LTD", qty:1648.56},
+      {name:"JULIANA DESIGNS (PTY) LTD", qty:1244.83},
+      {name:"INYATHI LOUNGE (PTY) LTD", qty:834.04},
+      {name:"BOOT & RALLY (PTY) (LTD)", qty:543.53},
+      {name:"A2HR COSMETIC SOLUTIONS (PTY) LTD", qty:458.57}
+    ],
+    dbn: [
+      {name:"KZN FASTNERS (PTY) LTD", qty:371.53},
+      {name:"TH STEVENS T/A COSY COUCH", qty:215.62},
+      {name:"TRUST SHOPFITTERS", qty:182.23},
+      {name:"CARLA ASHTON T/A THANDANA BAGS", qty:156.97},
+      {name:"ILIFA DEVELOPMENTS (PTY) LTD", qty:113.18}
+    ]
+  },
+
+  salesRepMonths: {
+    months: ["Mar '26","Apr '26","May '26","Jun '26"],
+    branches: {
+      "Durban": {
+        total: [2544.32,2416,2702,2362],
+        reps: {
+          "Michelle": [1857.92,1750,1757,1933],
+          "Craig": [686.4,666,945,429],
+          "Jason": [0,0,0,0]
+        }
+      },
+      "JHB": {
+        total: [10150.71,7996,9663,9987],
+        reps: {
+          "Branch": [825.71,688,578,484],
+          "Savanah": [3778,3506,4238,4663],
+          "Lize-Mari": [5547,3802,4847,4840],
+          "Jordan": [0,0,0,0]
+        }
+      },
+      "CPT": {
+        total: [12223.94,13162,14573,15762],
+        reps: {
+          "Internal": [1396.94,1308,967,1100],
+          "Melani": [4045,5249,5769,5512],
+          "Bianca": [6782,6605,7837,9150]
+        }
+      }
+    },
+    other: {
+      "G Route": [1076,638,1059,766],
+      "PE": [789,813,1041,671],
+      "Exports": [309,225,5,1464],
+      "Namibia": [424,168,225,197]
+    }
+  },
+
+  debtorsAge: { current:4448246.27, d30:4411317.91, d60:918719.51, d90:159408.35, d120:547727.94, total:10485419.98, asAt:"17 Jul 2026" },
+  creditorsAge: { current:4613632.76, d30:1472726.88, d60:0, d90:0, d120:0, total:6086359.64, asAt:"17 Jul 2026" },
+
+  overdue: [
+{"name":"AFIKA PROMOTIONS","code":"AFI001","d120":182273.87,"d90":7789.76,"d60":128276.36,"d30":211205.73,"current":18781.45,"total":548327.17,"note":""},
+{"name":"ALEXIOU LEATHER COUCHES","code":"ALE003","d120":10767.90,"d90":12919.91,"d60":5986.90,"d30":25069.02,"current":0,"total":54743.73,"note":""},
+{"name":"BRESAN FOOTWEAR (PTY) LTD","code":"BRE003","d120":0,"d90":0.02,"d60":26304.07,"d30":34931.25,"current":0,"total":61235.34,"note":""},
+{"name":"CAPE MASAI LEATHER ART AND CRAFT T/A","code":"CAP028","d120":0,"d90":3313.78,"d60":23891.26,"d30":11183.23,"current":4894.41,"total":43282.68,"note":""},
+{"name":"CATTLE & CO LEATHER","code":"CAT007","d120":0,"d90":2348.08,"d60":4543.14,"d30":1513.52,"current":0,"total":8404.74,"note":"Today"},
+{"name":"CORVARI FOOTWEAR CC","code":"COR004","d120":40170.97,"d90":0,"d60":0,"d30":0,"current":0,"total":40170.97,"note":""},
+{"name":"COVERUP CONCEPTS","code":"COV005","d120":24487.50,"d90":0,"d60":0,"d30":0,"current":0,"total":24487.50,"note":""},
+{"name":"DIRTY LEATHER","code":"DIR001","d120":2907.63,"d90":0,"d60":0,"d30":0,"current":0,"total":2907.63,"note":""},
+{"name":"MACTAVISH CLOTHING","code":"MAC007","d120":3914.51,"d90":0,"d60":2875.46,"d30":0,"current":0,"total":6789.97,"note":"15th July"},
+{"name":"MAVRICAN INTERNATIONAL (PTY) LTD","code":"MAV002","d120":60245.58,"d90":0,"d60":0,"d30":0,"current":0,"total":60245.58,"note":""},
+{"name":"NOMIA BAGS","code":"NOM002","d120":2571.98,"d90":0,"d60":0,"d30":0,"current":0,"total":2571.98,"note":"Not in SA, coming in Aug to make payment"},
+{"name":"NSW LEATHER CO (PTY) LTD","code":"NSW001","d120":0,"d90":4415.05,"d60":7105.91,"d30":0,"current":138943.84,"total":150464.80,"note":""},
+{"name":"SKINS FABRICATION (PTY) LTD","code":"SKI003","d120":0,"d90":30445.46,"d60":47591.44,"d30":49520.50,"current":26022.90,"total":153580.30,"note":""},
+{"name":"SLYDO LEATHER WORKS","code":"SLY001","d120":14608.46,"d90":0,"d60":0,"d30":0,"current":0,"total":14608.46,"note":"Next week Friday"},
+{"name":"SOFA DIVINE - SHOWROOM","code":"SOF022","d120":76411.47,"d90":3941.51,"d60":0,"d30":0,"current":0,"total":80352.98,"note":"Today"},
+{"name":"STEVENSON T/A INTERNATIONAL WHOLESALERS","code":"EAS004","d120":0,"d90":932.85,"d60":19932.98,"d30":14763.26,"current":0,"total":35629.09,"note":""},
+{"name":"Strassbergers","code":"STR002","d120":46411.27,"d90":0,"d60":0,"d30":0,"current":15178.96,"total":61590.23,"note":""},
+{"name":"THEMBA LIZE HOLDINGS (PTY) LTD","code":"THEM01","d120":11031.94,"d90":8279.43,"d60":0,"d30":0,"current":0,"total":19311.37,"note":""},
+{"name":"TOPMAN LEATHERS","code":"TOP009","d120":70902.43,"d90":29260.33,"d60":17261.50,"d30":14621.10,"current":0,"total":132045.36,"note":""},
+{"name":"WAKEFIELD ENTERPRISES (PTY) LTD","code":"SIG002","d120":48969.42,"d90":64030.57,"d60":39392.79,"d30":35696.23,"current":14947.13,"total":203036.14,"note":""}
+  ],
+
+  creditors: [
+    {"name":"C2M","d30":6603.75,"current":0,"total":6603.75,"note":""},
+    {"name":"CIVIL DEFENCE FORCE","d30":0,"current":858.37,"total":858.37,"note":""},
+    {"name":"CITI-SPRINT EXPRESS COURIER","d30":0,"current":-4045.13,"total":-4045.13,"note":"New courier, trialling — move to monthly billing after trial"},
+    {"name":"COPYWRITE BUSINESS CENTRE","d30":4403.00,"current":0,"total":4403.00,"note":""},
+    {"name":"DPD LOGISTICS","d30":12252.61,"current":0,"total":12252.61,"note":"Not happy with service — replacing with Citi Sprint"},
+    {"name":"EM SHELVING","d30":0,"current":-11702.00,"total":-11702.00,"note":"Deposit on shelves for JHB"},
+    {"name":"FREIGHTMORE","d30":93619.78,"current":42457.99,"total":136077.77,"note":""},
+    {"name":"HANNITAN LEATHER CC","d30":55848.07,"current":4273221.67,"total":4329069.74,"note":"R55k await credit note as discussed with Mr Hanni"},
+    {"name":"HILDENE INVESTMENTS","d30":11034.65,"current":0,"total":11034.65,"note":""},
+    {"name":"OASIS TANNING (PTY) LTD","d30":0,"current":-5000.00,"total":-5000.00,"note":"Returned Wildebeest, not suitable — awaiting replacements"},
+    {"name":"OLIVETTI","d30":1172.35,"current":0,"total":1172.35,"note":""},
+    {"name":"STEINER HYGIENE","d30":0,"current":161.06,"total":161.06,"note":""},
+    {"name":"FUSION LEATHER WORLD","d30":3007287.11,"current":530740.13,"total":3538027.24,"note":""},
+    {"name":"THE COURIER GUY","d30":-6629.25,"current":552.90,"total":-6076.35,"note":""},
+    {"name":"TOSHIBA","d30":813.34,"current":0,"total":813.34,"note":""},
+    {"name":"TECHNICAL SUPPORT SOLUTIONS","d30":0,"current":450.00,"total":450.00,"note":""},
+    {"name":"VANDAH'S PACKAGING","d30":5287.33,"current":0,"total":5287.33,"note":""},
+    {"name":"RHENUS EXPRESS","d30":4508.31,"current":0,"total":4508.31,"note":""}
+  ],
+
+  notes: {
+    debtors: "Beesdam: R80,000 paying today\nLeather master: R30,000 paid today\nMagdas leather: Paid\nNomia: Not in SA, coming in Aug to make payment\nPdj: they said this week, hopefully today/during weekend\nRowdy: 13th July\nSlydo: next week Friday\nSofa Divine: today\nCattle & Co: today\nMactavish: 15th July",
+    creditors: "Citi Sprint – new courier company we are trying out, will move over to monthly billing after the trial period.\nDPD – we not happy with their service and will replace them with Citi Sprint\nEM Shelving – deposit on the shelves for JHB\nHannitan – R55k await credit note as discussed with Mr Hanni\nOasis – we returned Wildebeest not suitable they will send replacements",
+    payments: "Refunds – clients paying twice and making mistakes / Ram Holding R4,426 and Ascot R2,558 refunds\nRoll Core for cores (checked with Fusion they do not have the long ones we need for exports), R2,001\nTechnical Support – assistance with the new laptops for new employees, R1,800\nPointline – Pull up banner for Allsource – sharing cost with Fusion, R2,926\nStaff loan to Gavin as per my email, R10,000"
+  }
+};
+
+/* Registry of all saved weeks — add a new entry here each week. */
+const WEEKS = [
+  { key:"2026-07-17", label:"17 Jul 2026", data: WEEK_DATA_2026_07_17 },
+  { key:"2026-07-24", label:"24 Jul 2026", data: WEEK_DATA_2026_07_24 }
+];
+
+let currentWeekKey = WEEKS[WEEKS.length-1].key;
+function currentWeekDefault(){
+  return WEEKS.find(w=>w.key===currentWeekKey).data;
+}
+function storageKeyFor(weekKey){ return "ags_weekly_report_"+weekKey; }
+
 let DATA = null;
 let dirty = false;
 
+function populateWeekSelect(){
+  const sel = document.getElementById('weekSelect');
+  sel.innerHTML = WEEKS.map(w=>`<option value="${w.key}">${w.label}</option>`).join('');
+  sel.value = currentWeekKey;
+}
+document.getElementById('weekSelect').addEventListener('change', e=>{
+  if(dirty && !confirm("Switch weeks? Any unsaved changes to the current week will be lost unless you've clicked Save changes.")){
+    e.target.value = currentWeekKey;
+    return;
+  }
+  currentWeekKey = e.target.value;
+  loadData();
+  dirty = false;
+  document.getElementById('saveState').textContent = "All changes saved in this browser";
+  document.getElementById('saveState').classList.remove('dirty');
+  renderAll();
+});
+
 function loadData(){
   try{
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = localStorage.getItem(storageKeyFor(currentWeekKey));
     if(raw){ DATA = JSON.parse(raw); return; }
   }catch(e){ console.warn("could not read storage", e); }
-  DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  DATA = JSON.parse(JSON.stringify(currentWeekDefault()));
 }
 function persist(){
   try{
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA));
+    localStorage.setItem(storageKeyFor(currentWeekKey), JSON.stringify(DATA));
     dirty = false;
     document.getElementById('saveState').textContent = "All changes saved in this browser";
     document.getElementById('saveState').classList.remove('dirty');
@@ -1387,8 +1650,8 @@ document.getElementById('btnImport').addEventListener('change', (e)=>{
   e.target.value = '';
 });
 document.getElementById('btnReset').addEventListener('click', ()=>{
-  if(confirm("Reset all data back to the original numbers? This clears any edits saved in this browser.")){
-    DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+  if(confirm("Reset this week's data back to the original numbers? This clears any edits saved in this browser for "+WEEKS.find(w=>w.key===currentWeekKey).label+" only.")){
+    DATA = JSON.parse(JSON.stringify(currentWeekDefault()));
     persist();
     renderAll();
   }
@@ -1418,6 +1681,7 @@ function renderAll(){
   renderNotes();
 }
 
+populateWeekSelect();
 loadData();
 renderAll();
 </script>
