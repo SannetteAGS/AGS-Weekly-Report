@@ -1110,10 +1110,226 @@ const WEEK_DATA_2026_07_31 = {
   }
 };
 
+const WEEK_DATA_2026_08_07 = {
+  header: {
+    bankBalance: "R4,415,690.49",
+    usdBalance: "$499,010.60",
+    reportDate: "7 Aug 2026"
+  },
+
+  cashflow: {
+    months: ["August 2026","September 2026","October 2026","November 2026","December 2026","January 2027","February 2027"],
+    detail: {
+      "August 2026": {
+        opening: "R4,415,690.49",
+        inflows: [ ["Debtors", 5350000] ],
+        outflows: [ ["14 Hannitan",5000000], ["24 Salaries",425000], ["31 Fusion Leather",2869461.16], ["31 SARS VAT",85000], ["31 SARS Provisional Tax",836725.68], ["31 Creditors",328600.75] ],
+        available: "R220,902.90"
+      },
+      "September 2026": {
+        opening: "R220,902.90",
+        inflows: [ ["Debtors", 9750000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",102000], ["Hannitan",2850000], ["Salaries",425000], ["Fusion Leather",2088975], ["Dividend",2500000], ["Incentive",250000], ["SARS VAT",85000], ["SARS Top Up",58000], ["Creditors",350000] ],
+        available: "R1,136,927.90"
+      },
+      "October 2026": {
+        opening: "R1,136,927.90",
+        inflows: [ ["Debtors", 10500000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",102000], ["Hannitan",6500000], ["Salaries",400000], ["Fusion Leather",2500000], ["SARS VAT",85000], ["Creditors",385000] ],
+        available: "R1,539,927.90"
+      },
+      "November 2026": {
+        opening: "R1,539,927.90",
+        inflows: [ ["Debtors", 10750000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",102000], ["Hannitan",6000000], ["Dividend",2500000], ["Salaries",400000], ["Fusion Leather",1850000], ["SARS VAT",85000], ["Creditors",385000] ],
+        available: "R842,927.90"
+      },
+      "December 2026": {
+        opening: "R842,927.90",
+        inflows: [ ["Debtors", 9000000] ],
+        outflows: [ ["Debit Orders",125000], ["SARS PAYE",102000], ["Hannitan",2000000], ["Salaries",800000], ["Fusion Leather",2500000], ["SARS VAT",185000], ["Creditors",385000] ],
+        available: "R3,745,927.90"
+      },
+      "January 2027": {
+        opening: "R3,745,927.90",
+        inflows: [ ["Debtors", 6500000] ],
+        outflows: [ ["Debit Orders",135000], ["SARS PAYE",135000], ["Hannitan",2000000], ["Salaries",450000], ["Fusion Leather",850000], ["SARS VAT",150000], ["Creditors",385000] ],
+        available: "R6,140,927.90"
+      },
+      "February 2027": {
+        opening: "R6,140,927.90",
+        inflows: [ ["Debtors", 8500000] ],
+        outflows: [ ["Debit Orders",135000], ["SARS PAYE",115000], ["Hannitan",5000000], ["Salaries",450000], ["Incentive",500000], ["Fusion Leather",1500000], ["SARS VAT",65000], ["SARS Provisional Tax",2800000], ["Dividend",1500000], ["Creditors",385000] ],
+        available: "R2,190,927.90"
+      }
+    }
+  },
+
+  salesMonths: {
+    order: ["Aug '26","July '26","June '26"],
+    data: {
+      "Aug '26": { weeks:[
+        {label:"Week 1", m2:7216.18, rand:2432856.28}
+      ]},
+      "July '26": { weeks:[
+        {label:"Week 1", m2:4729.58, rand:1552076.93},
+        {label:"Week 2", m2:7416.81, rand:2416467.68},
+        {label:"Week 3", m2:6934.55, rand:2287081.52},
+        {label:"Week 4", m2:5888.69, rand:1905411.66},
+        {label:"Week 5", m2:6297, rand:2001331.05}
+      ]},
+      "June '26": { weeks:[
+        {label:"Week 1", m2:7228, rand:2275055},
+        {label:"Week 2", m2:9499, rand:3231141},
+        {label:"Week 3", m2:5054, rand:1584885},
+        {label:"Week 4", m2:5276.26, rand:1739238.53},
+        {label:"Week 5", m2:1054.44, rand:327064.69}
+      ]}
+    }
+  },
+
+  yoy: {
+    "Aug '26": { weeks:[
+      {label:"Week 1", m2:7216.18, rand:2432856.28},{label:"Week 2", m2:0, rand:0},
+      {label:"Week 3", m2:0, rand:0},{label:"Week 4", m2:0, rand:0},{label:"Week 5", m2:0, rand:0}
+    ]},
+    "Aug '25": { weeks:[
+      {label:"Week 1", m2:9997.86, rand:2998916.13},{label:"Week 2", m2:6961, rand:2094669},
+      {label:"Week 3", m2:5706, rand:1771571},{label:"Week 4", m2:5446.65, rand:1711542.54},{label:"Week 5", m2:0, rand:0}
+    ]},
+    "Aug '24": { weeks:[
+      {label:"Week 1", m2:2792, rand:840727},{label:"Week 2", m2:5092, rand:1620695},
+      {label:"Week 3", m2:6940, rand:2170278},{label:"Week 4", m2:7280, rand:2396910},{label:"Week 5", m2:5738, rand:1679506}
+    ]}
+  },
+
+  branchMonths: {
+    order: ["Apr '26","May '26","Jun '26","Jul '26","Aug '26"],
+    data: {
+      "Apr '26": {cpt:13162, jhb:7996, dbn:2416},
+      "May '26": {cpt:14573, jhb:9663, dbn:2702},
+      "Jun '26": {cpt:15762, jhb:9987, dbn:2362},
+      "Jul '26": {cpt:17371, jhb:11643, dbn:2253},
+      "Aug '26": {cpt:4480.42, jhb:2130, dbn:606}
+    }
+  },
+
+  top5Period: "1–7 Aug 2026",
+  top5: {
+    cpt: [
+      {name:"ROWDY INTERNATIONAL (Pty) Ltd", qty:300.33},
+      {name:"G-WORX THREE CC", qty:243.36},
+      {name:"LEATHER DIRECT (Pty) Ltd", qty:137.5},
+      {name:"LEATHER DIRECT (Pty) Ltd", qty:133.53},
+      {name:"OLLI AND ROSE (PTY) LTD", qty:104.51}
+    ],
+    jhb: [
+      {name:"JULIANA DESIGNS (PTY) LTD", qty:532.91},
+      {name:"INSPIRE RENTALS PTY LTD", qty:326.12},
+      {name:"HIGH THORN", qty:154.55},
+      {name:"BOOT & RALLY (PTY) (LTD)", qty:136.86},
+      {name:"ZAPPHIRE UPHOLSTERY", qty:88.5}
+    ],
+    dbn: [
+      {name:"KZN FASTNERS (PTY) LTD", qty:280.57},
+      {name:"RGM FURNITURE MANUFACTURES", qty:20.76}
+    ]
+  },
+
+  salesRepMonths: {
+    months: ["Apr '26","May '26","Jun '26","Jul '26","Aug '26"],
+    branches: {
+      "Durban": {
+        total: [2416,2702,2362,2253,606],
+        reps: {
+          "Michelle": [1750,1757,1933,1750,411],
+          "Craig": [666,945,429,503,147],
+          "Jason": [0,0,0,0,48]
+        }
+      },
+      "JHB": {
+        total: [7996,9663,9987,11643,2130],
+        reps: {
+          "Branch": [688,578,484,429,99],
+          "Savanah": [3506,4238,4663,5267,981],
+          "Lize-Mari": [3802,4847,4840,5575,958],
+          "Jordan": [0,0,0,372,92]
+        }
+      },
+      "CPT": {
+        total: [13162,14573,15762,17371,4480.42],
+        reps: {
+          "Internal": [1308,967,1100,1250,240.42],
+          "Melani": [5249,5769,5512,7234,1504],
+          "Bianca": [6605,7837,9150,8887,2736]
+        }
+      }
+    },
+    other: {
+      "G Route": [638,1059,766,1140,162],
+      "PE": [813,1041,671,778,414],
+      "Exports": [225,5,1464,1104,1070],
+      "Namibia": [168,225,197,304,84]
+    }
+  },
+
+  debtorsAge: { current:2163385.23, d30:5630774.17, d60:1561261.83, d90:411451.14, d120:464503.59, total:10231375.96, asAt:"7 Aug 2026" },
+  creditorsAge: { current:4384166.29, d30:3056263.10, d60:0.01, d90:0, d120:0, total:7440429.40, asAt:"7 Aug 2026" },
+
+  overdue: [
+{"name": "AFIKA PROMOTIONS", "code": "AFI001", "d120": 90063.63, "d90": 128276.36, "d60": 211205.73, "d30": 28516.32, "current": 0, "total": 458062.04, "note": ""},
+{"name": "BOOT & RALLY (PTY) (LTD)", "code": "BOO002", "d120": 0, "d90": 74300.64, "d60": 219932.71, "d30": 329056.82, "current": 56755.78, "total": 680045.95, "note": ""},
+{"name": "CATTLE & CO LEATHER", "code": "CAT007", "d120": 1498.08, "d90": 4543.14, "d60": 1513.52, "d30": 0, "current": 0, "total": 7554.74, "note": ""},
+{"name": "CORVARI FOOTWEAR CC", "code": "COR004", "d120": 25228.32, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 25228.32, "note": ""},
+{"name": "COVERUP CONCEPTS", "code": "COV005", "d120": 20987.5, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 20987.5, "note": ""},
+{"name": "DIRTY LEATHER", "code": "DIR001", "d120": 2907.63, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 2907.63, "note": ""},
+{"name": "H. LEFFLER & SON (PTY) LTD", "code": "LEF001", "d120": 0, "d90": 1880.49, "d60": 0, "d30": 237614.23, "current": 0, "total": 239494.72, "note": ""},
+{"name": "King Kong Leather and Cellular CC", "code": "KIN002", "d120": 0, "d90": 21070.76, "d60": 0, "d30": 0, "current": 0, "total": 21070.76, "note": ""},
+{"name": "LONE LEATHERS (PTY) LTD", "code": "LON003", "d120": 0, "d90": 5969.09, "d60": 5180.3, "d30": 0, "current": 0, "total": 11149.39, "note": ""},
+{"name": "MACTAVISH CLOTHING", "code": "MAC007", "d120": 2414.51, "d90": 2875.46, "d60": 0, "d30": 0, "current": 0, "total": 5289.97, "note": ""},
+{"name": "MAVRICAN INTERNATIONAL (PTY) LTD", "code": "MAV002", "d120": 50593.6, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 50593.6, "note": ""},
+{"name": "NOMIA BAGS", "code": "NOM002", "d120": 2571.98, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 2571.98, "note": "Not in SA, coming in Aug to make payment"},
+{"name": "PDJ COLLECTIVE (PTY) LTD", "code": "PDJ001", "d120": 0, "d90": 80289.47, "d60": 173353.52, "d30": 213831.64, "current": 18462.1, "total": 485936.73, "note": ""},
+{"name": "SKINS FABRICATION (PTY) LTD", "code": "SKI003", "d120": 0, "d90": 35591.44, "d60": 49520.5, "d30": 40539.13, "current": 7002.7, "total": 132653.77, "note": ""},
+{"name": "SLYDO LEATHER WORKS", "code": "SLY001", "d120": 14608.46, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 14608.46, "note": ""},
+{"name": "SOFA DIVINE - SHOWROOM", "code": "SOF022", "d120": 60352.98, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 60352.98, "note": ""},
+{"name": "Strassbergers", "code": "STR002", "d120": 41857.58, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 41857.58, "note": ""},
+{"name": "THEMBA LIZE HOLDINGS (PTY) LTD", "code": "THEM01", "d120": 21916.88, "d90": 0, "d60": 0, "d30": 0, "current": 0, "total": 21916.88, "note": ""},
+{"name": "TOPMAN LEATHERS", "code": "TOP009", "d120": 77603.58, "d90": 17261.5, "d60": 32472.91, "d30": 4707.37, "current": 0, "total": 132045.36, "note": ""},
+{"name": "WAKEFIELD ENTERPRISES (PTY) LTD", "code": "SIG002", "d120": 51898.86, "d90": 39392.79, "d60": 35696.23, "d30": 34454.36, "current": 0, "total": 161442.24, "note": ""}
+  ],
+
+  creditors: [
+    {"name": "CIVIL DEFENCE FORCE", "d30": 0, "current": 858.37, "total": 858.37, "note": ""},
+    {"name": "CITI - SPRINT EXPRESS COURIER", "d30": 13050.35, "current": 0, "total": 13050.35, "note": ""},
+    {"name": "COPYWRITE BUSINESS CENTRE CC T/A", "d30": 1053.5, "current": 0, "total": 1053.5, "note": ""},
+    {"name": "EM Shelvining", "d30": -11702, "current": 0, "total": -11702, "note": ""},
+    {"name": "FREIGHTMORE", "d30": 114245.91, "current": 0, "total": 114245.91, "note": ""},
+    {"name": "HANNITAN LEATHER CC", "d30": 48541.15, "current": 3110883.83, "total": 3159424.98, "note": "R55k await credit note as discussed with Mr Hanni"},
+    {"name": "HILDENE INVESTMENTS", "d30": 13313.65, "current": 0, "total": 13313.65, "note": ""},
+    {"name": "MARVELLOUS MAIDS", "d30": -4195, "current": 0, "total": -4195, "note": ""},
+    {"name": "OLIVETTI", "d30": 1190.34, "current": 0, "total": 1190.34, "note": ""},
+    {"name": "POSTNET", "d30": 0, "current": -48, "total": -48, "note": ""},
+    {"name": "STEINER HYGIENE", "d30": 0, "current": 161.06, "total": 161.06, "note": ""},
+    {"name": "FUSION LEATHER WORLD", "d30": 2869461.17, "current": 1277474.15, "total": 4146935.32, "note": ""},
+    {"name": "THE COURIER GUY", "d30": -3136.58, "current": -5163.12, "total": -8299.7, "note": ""},
+    {"name": "TOSHIBA", "d30": 813.34, "current": 0, "total": 813.34, "note": ""},
+    {"name": "Vandah's Packaging", "d30": 7658.19, "current": 0, "total": 7658.19, "note": ""},
+    {"name": "Rhenus Express", "d30": 5969.09, "current": 0, "total": 5969.09, "note": ""}
+  ],
+
+  notes: {
+    debtors: "Beesdam: R80,000 paying today\nLeather master: R30,000 paid today\nMagdas leather: Paid\nNomia: Not in SA, coming in Aug to make payment\nPdj: they said this week, hopefully today/during weekend\nRowdy: 13th July\nSlydo: next week Friday\nSofa Divine: today\nCattle & Co: today\nMactavish: 15th July",
+    creditors: "Citi Sprint – new courier company we are trying out, will move over to monthly billing after the trial period.\nDPD – we not happy with their service and will replace them with Citi Sprint\nEM Shelving – deposit on the shelves for JHB\nHannitan – R55k await credit note as discussed with Mr Hanni\nOasis – we returned Wildebeest not suitable they will send replacements",
+    payments: "Refunds – clients paying twice and making mistakes / Ram Holding R4,426 and Ascot R2,558 refunds\nRoll Core for cores (checked with Fusion they do not have the long ones we need for exports), R2,001\nTechnical Support – assistance with the new laptops for new employees, R1,800\nPointline – Pull up banner for Allsource – sharing cost with Fusion, R2,926\nStaff loan to Gavin as per my email, R10,000"
+  }
+};
+
 const WEEKS = [
   { key:"2026-07-17", label:"17 Jul 2026", data: WEEK_DATA_2026_07_17 },
   { key:"2026-07-24", label:"24 Jul 2026", data: WEEK_DATA_2026_07_24 },
-  { key:"2026-07-31", label:"31 Jul 2026", data: WEEK_DATA_2026_07_31 }
+  { key:"2026-07-31", label:"31 Jul 2026", data: WEEK_DATA_2026_07_31 },
+  { key:"2026-08-07", label:"7 Aug 2026", data: WEEK_DATA_2026_08_07 }
 ];
 
 let currentWeekKey = WEEKS[WEEKS.length-1].key;
